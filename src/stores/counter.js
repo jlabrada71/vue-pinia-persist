@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
+import { useLocalStorage } from "@vueuse/core"
+
 export const useCounterStore = defineStore("counter", {
   state: () => {
     return { 
-      count: 0
+      count: useLocalStorage('count', 0), //useLocalStorage takes in a key of 'count' and default value of 0
      };
   },
   actions: {
@@ -24,7 +26,7 @@ export const useCounterStore = defineStore("counter", {
       return state.count ** 2;
     },
   },
-  persist: {
-    storage: sessionStorage, // localStore to store data beyond the session.
-  }
+  //persist: {
+  //  storage: sessionStorage, // localStore to store data beyond the session.
+  //}
 });
