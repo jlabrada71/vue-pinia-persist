@@ -24,4 +24,7 @@ export const useCounterStore = defineStore("counter", {
       return state.count ** 2;
     },
   },
+  persist: {
+    storage: sessionStorage, // localStore to store data beyond the session.
+  }
 });
